@@ -7,9 +7,6 @@ class Student:
         self.courses_in_progress = []
         self.grades = {}
 
-    def print_grades(self):
-        print(self.grades)
-
     def rate_lectur(self, lectur, course, grade):
         if isinstance(lectur, Lecturer) and course in self.courses_in_progress and course in lectur.courses_attached:
             if course in lectur.grades:
