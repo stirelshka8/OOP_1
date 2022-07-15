@@ -1,7 +1,3 @@
-from re import S
-from unicodedata import name
-
-
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
