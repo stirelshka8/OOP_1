@@ -33,8 +33,13 @@ class Student:
         for self.finished in self.finished_courses:
             return self.finished
 
+# Код ниже выглядит просто ужасно. Но, вывод красив)
     def __str__(self):
-        return str(f'Студент\nИмя: {self.name} \nФамилия: {self.surname}\nСредняя оценка за домашнее задание: {self._val_grades()}\nКурсы в процессе изучени: {self._progres_course()}\nЗавершенные курсы: {self._finished_course()}\n\n')
+        return str(f'Студент\nИмя: {self.name} \n\
+Фамилия: {self.surname}\n\
+Средняя оценка за домашнее задание: {self._val_grades()}\n\
+Курсы в процессе изучени: {self._progres_course()}\n\
+Завершенные курсы: {self._finished_course()}\n\n')
 
 
 class Mentor:
