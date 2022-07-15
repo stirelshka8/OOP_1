@@ -47,13 +47,18 @@ class Reviewer(Mentor): # Добавил подкласс Reviewer
                 student.grades[course] = [grade]
         else:
             return 'Ошибка'
+    
+    def __str__(self):
+        return str(f'Имя: {self.name} \nФамилия: {self.surname}')
 
-    # TODO: Добавить перегрузку магического метода __str__
+
 
 
 cool_reviewer = Reviewer('Some', 'Buddy')
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 cool_lecture = Lecturer('Bob', 'Bobson')
+
+print(cool_reviewer)
 
 cool_reviewer.courses_attached += ['Python']
 cool_lecture.courses_attached += ['Python']
@@ -67,7 +72,3 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 best_student.rate_lectur(cool_lecture, 'Python', 10)
 best_student.rate_lectur(cool_lecture, 'Python', 9)
 best_student.rate_lectur(cool_lecture, 'Python', 8)
-
-
-print(best_student.print_grades())
-print(cool_lecture.print_grades())
