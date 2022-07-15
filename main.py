@@ -17,8 +17,26 @@ class Student:
         else:
             return 'Ошибка'
 
-    # TODO: Добавить перегрузку магического метода __str__
-       
+
+    def _val_grades(self):
+        for self.values in self.grades.values():
+            self.temp_keys = 0
+            for self.val in self.values:
+               self.temp_keys += self.val
+            return self.temp_keys // len(self.values)
+                
+    def _progres_course(self):
+        for self.progress in self.courses_in_progress:
+            return self.progress
+
+    def _finished_course(self):
+        for self.finished in self.finished_courses:
+            return self.finished
+
+    def __str__(self):
+        return str(f'Студент\nИмя: {self.name} \nФамилия: {self.surname}\nСредняя оценка за домашнее задание: {self._val_grades()}\nКурсы в процессе изучени: {self._progres_course()}\nЗавершенные курсы: {self._finished_course()}\n\n')
+
+
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -36,7 +54,7 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
             self.temp_keys = 0
             for self.val in self.values:
                self.temp_keys += self.val
-            return self.temp_keys / len(self.values)
+            return self.temp_keys // len(self.values)
                 
 
     def __str__(self):
@@ -67,7 +85,7 @@ cool_lecture = Lecturer('Bob', 'Bobson')
 
 cool_reviewer.courses_attached += ['Python']
 cool_lecture.courses_attached += ['Python']
-best_student.finished_courses += ['C#']
+best_student.finished_courses += ['C++']
 
 best_student.courses_in_progress += ['Python']
 
@@ -81,3 +99,4 @@ best_student.rate_lectur(cool_lecture, 'Python', 5)
 
 print(cool_reviewer)
 print(cool_lecture)
+print(best_student)
