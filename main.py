@@ -13,7 +13,8 @@ class Student:
     def rate_lectur(self, lectur, course, grade):
         if isinstance(lectur, Lecturer) and course in self.courses_in_progress and course in lectur.courses_attached:
             if course in lectur.grades:
-                lectur.grades[course] += [grade]
+                if grade <= 10:
+                    lectur.grades[course] += [grade]
             else:
                 lectur.grades[course] = [grade]
         else:
@@ -69,16 +70,17 @@ cool_lecture = Lecturer('Bob', 'Bobson')
 
 cool_reviewer.courses_attached += ['Python']
 cool_lecture.courses_attached += ['Python']
+best_student.finished_courses += ['C#']
 
 best_student.courses_in_progress += ['Python']
 
-cool_reviewer.rate_hw(best_student, 'Python', 10)
-cool_reviewer.rate_hw(best_student, 'Python', 10)
-cool_reviewer.rate_hw(best_student, 'Python', 10)
+cool_reviewer.rate_hw(best_student, 'Python', 7)
+cool_reviewer.rate_hw(best_student, 'Python', 4)
+cool_reviewer.rate_hw(best_student, 'Python', 9)
 
+best_student.rate_lectur(cool_lecture, 'Python', 8)
 best_student.rate_lectur(cool_lecture, 'Python', 10)
-best_student.rate_lectur(cool_lecture, 'Python', 10)
-best_student.rate_lectur(cool_lecture, 'Python', 10)
+best_student.rate_lectur(cool_lecture, 'Python', 5)
 
 print(cool_reviewer)
 print(cool_lecture)
