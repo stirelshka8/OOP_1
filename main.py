@@ -33,7 +33,16 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
         super().__init__(name, surname)
         self.grades = {} #  Атрибут-список для выставления оценок Lecture(в котором ключи – названия курсов, а значения – списки оценок)
 
-    # TODO: Добавить перегрузку магического метода __str__
+    def _val_grades(self):
+        for self.values in self.grades.values():
+            self.temp_keys = 0
+            for self.val in self.values:
+               self.temp_keys += self.val
+            return self.temp_keys / len(self.values)
+                
+
+    def __str__(self):
+        return str(f'Лектор\nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекции: {self._val_grades()}\n\n')
 
 class Reviewer(Mentor): # Добавил подкласс Reviewer
     def __init__(self, name, surname):
@@ -49,7 +58,7 @@ class Reviewer(Mentor): # Добавил подкласс Reviewer
             return 'Ошибка'
     
     def __str__(self):
-        return str(f'Имя: {self.name} \nФамилия: {self.surname}')
+        return str(f'Проверяющий\nИмя: {self.name} \nФамилия: {self.surname}\n\n')
 
 
 
@@ -57,8 +66,6 @@ class Reviewer(Mentor): # Добавил подкласс Reviewer
 cool_reviewer = Reviewer('Some', 'Buddy')
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 cool_lecture = Lecturer('Bob', 'Bobson')
-
-print(cool_reviewer)
 
 cool_reviewer.courses_attached += ['Python']
 cool_lecture.courses_attached += ['Python']
@@ -70,5 +77,8 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
 
 best_student.rate_lectur(cool_lecture, 'Python', 10)
-best_student.rate_lectur(cool_lecture, 'Python', 9)
-best_student.rate_lectur(cool_lecture, 'Python', 8)
+best_student.rate_lectur(cool_lecture, 'Python', 10)
+best_student.rate_lectur(cool_lecture, 'Python', 10)
+
+print(cool_reviewer)
+print(cool_lecture)
