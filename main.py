@@ -1,4 +1,13 @@
 class Student:
+    """    Публичный метод rate_lectur на вход принимает 3 параметра - лектора, карс за который будет выставлена
+оценка и сама оценка. Оценки ывставляются по 10-и бальной шкале. То есть оценка более 10 будет
+проигнорированнаю. Данные заносятся в словарь self.grades.
+
+    Приватный метод _val_grades на вход не принимает никаких параметров (кроме self). Необходим для подсчета
+и вывода средней оценки за домашние задания.
+
+    Магический метод __str__ который был перегружен наобходим для вывода информации о студенте.
+    Магический метод __lt__ который был перегружен наобходим для сравнения оценок за домашние задания студентов."""
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -42,16 +51,24 @@ class Student:
 
 
 class Mentor:
+    """Родительский класс содержит в себе Имя, Фамилию и список закрепленных курсов."""
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
         self.courses_attached = []
      
  
-class Lecturer(Mentor): # Добавил подкласс Lecture
+class Lecturer(Mentor):
+    """Дочерний класс который наследует у родительского Имя, Фамилию и список закрепленных курсов.
+    
+    Приватный метод _val_grades на вход не принимает никаких параметров (кроме self). Необходим для подсчета
+и вывода средней оценки за лекции.
+
+    Магический метод __str__ который был перегружен наобходим для вывода информации о лекторе.
+    Магический метод __lt__ который был перегружен наобходим для сравнения оценок за лекции."""
     def __init__(self, name, surname):
         super().__init__(name, surname)
-        self.grades = {} #  Атрибут-список для выставления оценок Lecture(в котором ключи – названия курсов, а значения – списки оценок)
+        self.grades = {} 
 
     def _val_grades(self):
         for self.values in self.grades.values():
@@ -72,11 +89,15 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
         return self._val_grades() < other._val_grades()
 
 
-class Reviewer(Mentor): # Добавил подкласс Reviewer
+class Reviewer(Mentor):
+    """Публичный метод rate_hw на вход принимает 3 параметра - студента, карс за который будет выставлена
+оценка и сама оценка.Данные заносятся в словарь self.grades.
+
+    Магический метод __str__ который был перегружен наобходим для вывода информации о проверяющем."""
     def __init__(self, name, surname):
         super().__init__(name, surname)
    
-    def rate_hw(self, student, course, grade): # Данный метод перемещен из класса Mentor в подкласс Reviewer
+    def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
             if course in student.grades:
                 student.grades[course] += [grade]
@@ -114,3 +135,5 @@ best_student.rate_lectur(cool_lecture, 'Python', 5)
 print(cool_reviewer)
 print(cool_lecture)
 print(best_student)
+
+print(Student.__doc__)
