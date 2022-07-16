@@ -8,6 +8,7 @@ class Student:
 
     Магический метод __str__ который был перегружен наобходим для вывода информации о студенте.
     Магический метод __lt__ который был перегружен наобходим для сравнения оценок за домашние задания студентов."""
+    
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -110,30 +111,54 @@ class Reviewer(Mentor):
         return str(f'Проверяющий\nИмя: {self.name} \nФамилия: {self.surname}\n\n')
 
 
+first_student = Student('Ruoy', 'Eman', 'male')
+second_student = Student('Mila', 'Kunis', 'famale')
+first_lecture = Lecturer('Bob', 'Bobson')
+second_lecture = Lecturer('Karl', 'Karlson')
+first_reviwer = Reviewer('Some', 'Buddy')
+second_reviwer = Reviewer('Bad', 'Man')
 
-cool_reviewer = Reviewer('Some', 'Buddy')
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-cool_lecture = Lecturer('Bob', 'Bobson')
+first_student.courses_in_progress += ['Python']
+first_student.courses_in_progress += ['Assembler']
+first_student.finished_courses += ['Fortran']
+first_student.finished_courses += ['C#']
+second_student.courses_in_progress += ['Python']
+second_student.courses_in_progress += ['C++']
+second_student.finished_courses += ['C#']
+second_student.finished_courses += ['Fortran']
 
-cool_reviewer.courses_attached += ['Python']
-cool_lecture.courses_attached += ['Python']
-best_student.finished_courses += ['C++, C#']
+first_lecture.courses_attached += ['Python']
+first_lecture.courses_attached += ['C++']
+second_lecture.courses_attached += ['C++']
+second_lecture.courses_attached += ['Python']
 
-best_student.courses_in_progress += ['Python']
+first_reviwer.courses_attached += ['Python']
+first_reviwer.courses_attached += ['Assembler']
+second_reviwer.courses_attached += ['Python']
+second_reviwer.courses_attached += ['C++']
 
-cool_reviewer.rate_hw(best_student, 'Python', 7)
-cool_reviewer.rate_hw(best_student, 'Python', 4)
-cool_reviewer.rate_hw(best_student, 'Python', 9)
+first_reviwer.rate_hw(first_student, 'Python', 7)
+first_reviwer.rate_hw(first_student, 'Python', 4)
+first_reviwer.rate_hw(first_student, 'Python', 9)
+second_reviwer.rate_hw(second_student, 'C++', 3)
+second_reviwer.rate_hw(second_student, 'C++', 6)
+second_reviwer.rate_hw(second_student, 'C++', 3)
 
-best_student.rate_lectur(cool_lecture, 'Python', 8)
-best_student.rate_lectur(cool_lecture, 'Python', 10)
-best_student.rate_lectur(cool_lecture, 'Python', 5)
+first_student.rate_lectur(first_lecture, 'Python', 5)
+first_student.rate_lectur(first_lecture, 'Python', 7)
+first_student.rate_lectur(first_lecture, 'Python', 10)
+second_student.rate_lectur(second_lecture, 'C++', 8)
+second_student.rate_lectur(second_lecture, 'C++', 2)
+second_student.rate_lectur(second_lecture, 'C++', 10)
 
+print(first_student)
+print(second_student)
+print(first_lecture)
+print(second_lecture)
+print(first_reviwer)
+print(second_reviwer)
 
-
-
-print(cool_reviewer)
-print(cool_lecture)
-print(best_student)
-
-print(Student.__doc__)
+print(first_student < second_student)
+print(first_lecture < second_lecture)
+print(second_student < first_student)
+print(second_lecture < first_lecture)
