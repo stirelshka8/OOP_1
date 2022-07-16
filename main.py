@@ -37,7 +37,7 @@ class Student:
         if not isinstance(other, Student):
             print("Не в классе Student")
             return
-        return self._val_grades < other._val_grades
+        return self._val_grades() < other._val_grades()
 
 
 
@@ -69,7 +69,7 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
         if not isinstance(other, Lecturer):
             print("Не в классе Lecturer")
             return
-        return self._val_grades < other._val_grades
+        return self._val_grades() < other._val_grades()
 
 
 class Reviewer(Mentor): # Добавил подкласс Reviewer
@@ -87,7 +87,6 @@ class Reviewer(Mentor): # Добавил подкласс Reviewer
     
     def __str__(self):
         return str(f'Проверяющий\nИмя: {self.name} \nФамилия: {self.surname}\n\n')
-
 
 
 
@@ -109,7 +108,9 @@ best_student.rate_lectur(cool_lecture, 'Python', 8)
 best_student.rate_lectur(cool_lecture, 'Python', 10)
 best_student.rate_lectur(cool_lecture, 'Python', 5)
 
+
+
+
 print(cool_reviewer)
 print(cool_lecture)
 print(best_student)
-
