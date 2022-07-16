@@ -17,9 +17,11 @@ class Student:
         else:
             return 'Ошибка'
 
-    def comparison(self):
-        # TODO: реализовать функцию сравнения, возможно придется переопределить магический метод
-        pass
+    def __lt__(self, other):
+        if not isinstance(other, Student):
+            print("Не в классе Student")
+            return
+        return self.name < other.name
 
 
     def _val_grades(self):
@@ -62,6 +64,13 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
     def __str__(self):
         return str(f'Лектор\nИмя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекции: {self._val_grades()}\n\n')
 
+    def __lt__(self, other):
+        if not isinstance(other, Lecturer):
+            print("Не в классе Lecturer")
+            return
+        return self.name < other.name
+
+
 class Reviewer(Mentor): # Добавил подкласс Reviewer
     def __init__(self, name, surname):
         super().__init__(name, surname)
@@ -102,3 +111,4 @@ best_student.rate_lectur(cool_lecture, 'Python', 5)
 print(cool_reviewer)
 print(cool_lecture)
 print(best_student)
+
