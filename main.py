@@ -17,30 +17,26 @@ class Student:
         else:
             return 'Ошибка'
 
+    def comparison(self):
+        # TODO: реализовать функцию сравнения, возможно придется переопределить магический метод
+        pass
+
 
     def _val_grades(self):
         for self.values in self.grades.values():
             self.temp_keys = 0
             for self.val in self.values:
                self.temp_keys += self.val
-            return self.temp_keys // len(self.values)
+            return self.temp_keys // len(self.values) # Так как в заднии сказанно среднее значение, вот я и использовал
+                                                      # челочисленное деление
                 
-    def _progres_course(self):
-        for self.progress in self.courses_in_progress:
-            return self.progress
-
-    def _finished_course(self):
-        for self.finished in self.finished_courses:
-            return self.finished
-
 # Код ниже выглядит просто ужасно. Но, вывод красив)
     def __str__(self):
         return str(f'Студент\nИмя: {self.name} \n\
 Фамилия: {self.surname}\n\
 Средняя оценка за домашнее задание: {self._val_grades()}\n\
-Курсы в процессе изучени: {self._progres_course()}\n\
-Завершенные курсы: {self._finished_course()}\n\n')
-
+Курсы в процессе изучени: {", ".join(self.courses_in_progress)}\n\
+Завершенные курсы: {", ".join(self.finished_courses)}\n\n')
 
 class Mentor:
     def __init__(self, name, surname):
@@ -59,7 +55,8 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
             self.temp_keys = 0
             for self.val in self.values:
                self.temp_keys += self.val
-            return self.temp_keys // len(self.values)
+            return self.temp_keys // len(self.values)# Так как в заднии сказанно среднее значение, вот я и использовал
+                                                     # челочисленное деление
                 
 
     def __str__(self):
@@ -90,7 +87,7 @@ cool_lecture = Lecturer('Bob', 'Bobson')
 
 cool_reviewer.courses_attached += ['Python']
 cool_lecture.courses_attached += ['Python']
-best_student.finished_courses += ['C++']
+best_student.finished_courses += ['C++, C#']
 
 best_student.courses_in_progress += ['Python']
 
