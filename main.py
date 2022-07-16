@@ -17,13 +17,6 @@ class Student:
         else:
             return 'Ошибка'
 
-    def __lt__(self, other):
-        if not isinstance(other, Student):
-            print("Не в классе Student")
-            return
-        return self.name < other.name
-
-
     def _val_grades(self):
         for self.values in self.grades.values():
             self.temp_keys = 0
@@ -39,6 +32,14 @@ class Student:
 Средняя оценка за домашнее задание: {self._val_grades()}\n\
 Курсы в процессе изучени: {", ".join(self.courses_in_progress)}\n\
 Завершенные курсы: {", ".join(self.finished_courses)}\n\n')
+
+    def __lt__(self, other):
+        if not isinstance(other, Student):
+            print("Не в классе Student")
+            return
+        return self._val_grades < other._val_grades
+
+
 
 class Mentor:
     def __init__(self, name, surname):
@@ -68,7 +69,7 @@ class Lecturer(Mentor): # Добавил подкласс Lecture
         if not isinstance(other, Lecturer):
             print("Не в классе Lecturer")
             return
-        return self.name < other.name
+        return self._val_grades < other._val_grades
 
 
 class Reviewer(Mentor): # Добавил подкласс Reviewer
