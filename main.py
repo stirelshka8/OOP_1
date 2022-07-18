@@ -1,3 +1,6 @@
+from ntpath import join
+
+
 class Student:
     """    Публичный метод rate_lectur на вход принимает 3 параметра - лектора, карс за который будет выставлена
 оценка и сама оценка. Оценки ывставляются по 10-и бальной шкале. То есть оценка более 10 будет
@@ -48,6 +51,22 @@ class Student:
             print("Не в классе Student")
             return
         return self._val_grades() < other._val_grades()
+
+    # Выложил на проверку и только потом увидел что не написал функции вывода средней оценки студентов и преподавателей
+    # если успею исправить до момента Вашей проверки, то будет отлично. Заранее извиняюсь
+    
+    def student_assessments(self, students, courses):
+        self.students = students
+        self.courses = courses
+        self.number_students = len(self.students)
+        self.general_assessment = 0
+
+        for self.studentos in self.students:
+            if isinstance(self.studentos, Student) and self.studentos in self.courses_in_progress and self.courses in self.grades:
+                self.general_assessment += (sum(self.grades[self.courses])) / (len(self.grades[self.courses]))
+            else:
+                print("Никогда такого не было и вот опять!!!!!!!")
+
 
 
 
@@ -140,9 +159,9 @@ second_reviwer.courses_attached += ['C++']
 first_reviwer.rate_hw(first_student, 'Python', 7)
 first_reviwer.rate_hw(first_student, 'Python', 4)
 first_reviwer.rate_hw(first_student, 'Python', 9)
-second_reviwer.rate_hw(second_student, 'C++', 3)
-second_reviwer.rate_hw(second_student, 'C++', 6)
-second_reviwer.rate_hw(second_student, 'C++', 3)
+second_reviwer.rate_hw(second_student, 'С++', 3)
+second_reviwer.rate_hw(second_student, 'Python', 6)
+second_reviwer.rate_hw(second_student, 'Python', 3)
 
 first_student.rate_lectur(first_lecture, 'Python', 5)
 first_student.rate_lectur(first_lecture, 'Python', 7)
@@ -151,14 +170,15 @@ second_student.rate_lectur(second_lecture, 'C++', 8)
 second_student.rate_lectur(second_lecture, 'C++', 2)
 second_student.rate_lectur(second_lecture, 'C++', 10)
 
-print(first_student)
-print(second_student)
-print(first_lecture)
-print(second_lecture)
-print(first_reviwer)
-print(second_reviwer)
+# print(first_student)
+# print(second_student)
+# print(first_lecture)
+# print(second_lecture)
+# print(first_reviwer)
+# print(second_reviwer)
 
-print(first_student < second_student)
-print(first_lecture < second_lecture)
-print(second_student < first_student)
-print(second_lecture < first_lecture)
+# print(first_student < second_student)
+# print(first_lecture < second_lecture)
+# print(second_student < first_student)
+# print(second_lecture < first_lecture)
+
