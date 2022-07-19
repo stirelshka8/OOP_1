@@ -52,23 +52,6 @@ class Student:
             return
         return self._val_grades() < other._val_grades()
 
-    # Выложил на проверку и только потом увидел что не написал функции вывода средней оценки студентов и преподавателей
-    # если успею исправить до момента Вашей проверки, то будет отлично. Заранее извиняюсь
-    
-    def student_assessments(self, students, courses):
-        self.students = students
-        self.courses = courses
-        self.number_students = len(self.students)
-        self.general_assessment = 0
-
-        for self.studentos in self.students:
-            if isinstance(self.studentos, Student) and self.studentos in self.courses_in_progress and self.courses in self.grades:
-                self.general_assessment += (sum(self.grades[self.courses])) / (len(self.grades[self.courses]))
-            else:
-                print("Никогда такого не было и вот опять!!!!!!!")
-
-
-
 
 class Mentor:
     """Родительский класс содержит в себе Имя, Фамилию и список закрепленных курсов."""
